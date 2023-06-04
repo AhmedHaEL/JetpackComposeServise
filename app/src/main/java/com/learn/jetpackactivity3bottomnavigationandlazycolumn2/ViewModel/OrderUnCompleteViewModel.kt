@@ -1,0 +1,26 @@
+package com.learn.jetpackactivity3bottomnavigationandlazycolumn2.ViewModel
+
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.example.DataServes
+import com.example.example.UnComplete
+import com.learn.jetpackactivity3bottomnavigationandlazycolumn2.NetWork.ApiService
+import kotlinx.coroutines.launch
+
+class OrderUnCompleteViewModel : ViewModel() {
+
+    var orderUnCompleteListResponse:List<UnComplete> by mutableStateOf(listOf())
+
+    fun getOrderUnComplete(){
+        viewModelScope.launch {
+            val apiOrderUnComplete = ApiService.getInstance()
+
+            val orderUnCompleteList = apiOrderUnComplete.getOrderUnComplete("Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5Nzc2N2JmYS1mZWVhLTQ0MTEtOWE0My0wYTliNzE4Y2YwZmEiLCJqdGkiOiJlZTgzOGNhMTFmMDYxYWI3NzE1NTMwZDAzZDhjMzQyMjhjMTUyODRhYjUzOTAzYzAxZmRiYmEyOGI0ODlhOWRjYmI1N2E2NTkwN2U5NjhkZCIsImlhdCI6MTY4NTQzMDQyNSwibmJmIjoxNjg1NDMwNDI1LCJleHAiOjE3MTcwNTI4MjUsInN1YiI6IjM2MiIsInNjb3BlcyI6W119.HGDlVnA0yAGPODSOtrLSMeNyY27X0O4O0T3CxVqpNQLpUe_mBSGKltnIg8_uCMGEJ16Qa7P8OZI23b3lnWyv0F3U7IG64Mwe23a2sjlMfiSNU0KgH1q2fMsqN9mgUy6YT57wC5qsnX0kf4A45WUEavbEVKcIa53EXTohHH0aIgN1-SgLvUKQAS_VL2ynLDwNrV5MU6iBB_J50wQbfSFdwISaPALYIb8aFvb715limZkLaLXUCMPPdE3iccVvlJBO7Mud6m1KMIdaOA-w-AvpHHXJ5H4N2NgQrQhdcht25IT-_cOYs1KYvyD1WieNUfGoA_gSMVEPamP8vixRi4NsLkGWSQnUZaaFX9FXfv_7ehU3iWv0u_XQQN4t3ZNODaTBih5cIuC8j6-ExBn3hAeGllrESRjP15PohvtGNYJRgJEU2J-UNZgOT9KVDobn1E9HiIhvLcqX3vHWa04g-IpVNuCd_LYupMqmVhGbhkidblCvbMwMIFX1HodejaAMBKfOYn38VzvEb6S4t56hw_9qYagUV2KYlX71SnH8RTGh8jDaFZogqTBwEjV-zz_hOe_be5UOlG5EXOeDsPR_XkP3VNc03IrmpXu6VEKZWbK87CWcKAJaZa8bSYC4FpHMyKM2l847Ns6XO3WgNZJMCHnJtc4hh0x9D2UFXlXqTa5DkrY")
+            orderUnCompleteListResponse = orderUnCompleteList.dataOrderUnComplete
+        }
+    }
+
+}
